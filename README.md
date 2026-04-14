@@ -18,8 +18,6 @@ The goal of this project is to:
 
 Dashboard Overview
 
-![Dashboard](images/dashboard.png)
-
 The dashboard includes:
 
 - Depression Trends → Shows how depression scores change over time  
