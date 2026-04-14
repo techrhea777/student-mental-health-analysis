@@ -60,7 +60,6 @@ This dashboard can help:
 - Improve mental health support strategies
 - Understand how student experience evolves over time
 
-Author - Rhea Mendonca
 
 If you found this project interesting, feel free to connect or share feedback!
 
