@@ -1,0 +1,15 @@
+stay,student_type,avg_depression,avg_socialconnectedness,avg_stress
+1,International,7.48,38.11,72.8
+1,Domestic,8.7,37.15,62.6
+2,International,8.28,37.08,77.67
+2,Domestic,9.46,37.08,66.46
+3,International,9.09,37.13,78.0
+3,Domestic,8.43,39.09,58.04
+4,International,8.57,33.93,87.71
+4,Domestic,7.0,36.67,64.78
+5,International,0.0,34.0,91.0
+5,Domestic,11.5,34.0,88.0
+6,International,6.0,38.0,58.67
+7,International,4.0,48.0,45.0
+8,International,10.0,44.0,65.0
+10,International,13.0,32.0,50.0
