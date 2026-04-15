@@ -1,89 +1,20 @@
-Mental Health Trends Dashboard
+International Student Mental Health Analysis (SQL - BIGQUERY)
+ Problem
 
-Project Overview
+Understanding how duration of stay impacts the mental health of international students is critical for improving student support systems.
 
-This project explores how mental health indicators vary between international and domestic students, with a focus on how length of stay impacts their well-being.
-The analysis is visualized through an interactive Power BI dashboard, making it easy to identify patterns and compare trends across student groups.
+Approach
 
- Objective
+Analyzed a dataset of 50 student records using SQL in Google BigQuery, focusing exclusively on international students to eliminate population bias.
 
-The goal of this project is to:
+Key steps:
 
-- Compare mental health metrics between international and domestic students**
-- Understand how length of stay influences:
-  - Depression levels  
-  - Social connectedness  
-  - Acculturative stress  
-- Present findings in a clear and visual format for decision-making
-
-Dashboard Overview
-
-The dashboard includes:
-
-- Depression Trends → Shows how depression scores change over time  
-- Social Connectedness Trends → Tracks students’ sense of belonging  
-- Stress Trends → Highlights changes in acculturative stress  
-- Comparison Chart → Direct comparison between international and domestic students  
-- Insights Panel → Summary of key findings  
-
-Key Insights
-
-- International students experience slightly higher stress levels
-- Depression levels are similar across groups but vary over time
-- Social connectedness remains relatively consistent
-- Length of stay has a stronger impact on mental health than student type
-
-Interpretation
-
-The analysis suggests that adjusting to a new environment affects students over time.  
-While both groups show similar trends in some areas, international students face higher stress, likely due to cultural and environmental changes.
-
- Tools Used
-
-- Power BI → Data visualization and dashboard creation  
-- Data Source→ Aggregated student mental health dataset  
-Dataset Summary
-
-The dataset includes:
-
-- `stay` → Length of stay (years)  
-- `student_type` → International or Domestic  
-- `avg_depression` → Average depression score  
-- `avg_socialconnectedness` → Social connectedness score  
-- `avg_stress` → Stress level score  
-
- Business Value
-
-This dashboard can help:
-
-- Universities identify at-risk student groups
-- Improve mental health support strategies
-- Understand how student experience evolves over time
+Filtered dataset to isolate international students
+Segmented students by length of stay
+Computed aggregate mental health metrics per segment
 
 
-If you found this project interesting, feel free to connect or share feedback!
-
-Student Mental Health Analysis (BigQuery + Power BI)
-
-Project Overview
-
-This project analyzes mental health trends among students, focusing on differences between international and domestic students and how length of stay impacts well-being.
-
-The analysis is performed using Google BigQuery (SQL) and visualized through an interactive Power BI dashboard.
-
-Objectives
-
-Analyze how length of stay affects mental health
-Compare international vs domestic students
-Identify trends in:
-Depression (PHQ-9)
-Social connectedness (SCS)
-Acculturative stress (ASISS)
-SQL Analysis (BigQuery)
-
-International Students Trend Analysis
-This query analyzes mental health trends for international students based on their length of stay.
-
+Core Query
 SELECT
   stay,
   COUNT(*) AS count_students,
@@ -95,44 +26,40 @@ WHERE inter_dom = 'Inter'
 GROUP BY stay
 ORDER BY stay;
 
- 2. International vs Domestic Comparison
 
-This query compares mental health metrics between international and domestic students.
+What This Does
+Segmentation → Groups users by behavioral cohort (length of stay)
+Aggregation → Computes key mental health indicators:
+Depression (todep)
+Social connectedness (tosc)
+Stress (toas)
+Normalization → Rounds outputs for consistent reporting
+Ordering → Produces interpretable, time-based trends
 
-SELECT
-  stay,
-  CASE 
-    WHEN inter_dom = 'Inter' THEN 'International'
-    WHEN inter_dom = 'Dom' THEN 'Domestic'
-  END AS student_type,
-  ROUND(AVG(todep), 2) AS avg_depression,
-  ROUND(AVG(tosc), 2) AS avg_social,
-  ROUND(AVG(toas), 2) AS avg_stress
-FROM `big-query-tutorial-488409.Students.Students`
-WHERE stay IS NOT NULL
-GROUP BY stay, student_type
-ORDER BY stay;
 
-Power BI Dashboard
+Why This Matters
 
-Key Insights
-International students show higher stress levels
-Depression trends vary across length of stay
-Social connectedness remains relatively stable
-Length of stay has a stronger impact than student type
+This analysis surfaces cohort-based trends, enabling:
 
-Tools Used
-Google BigQuery (SQL) → Data extraction & aggregation
-Power BI → Dashboard & visualization
-Dataset → Student mental health data
+Identification of adaptation patterns over time
+Detection of high-risk groups (e.g., early-stage students)
+Data-driven recommendations for student support interventions
 
-Business Value
 
-This project demonstrates:
+Key Insight 
 
-Ability to work with cloud data (BigQuery)
-Strong SQL aggregation skills
-Data storytelling through Power BI dashboards
-Ability to generate actionable insights
+Early-stage international students tend to show higher stress and lower social connectedness, suggesting onboarding and integration programs are critical in the first year.
 
+Tech Stack
+SQL (BigQuery)
+Structured dataset (CSV → warehouse table)
+
+
+Takeaway
+
+Designed a cohort-based analytical query to extract actionable insights from raw student data, demonstrating:
+
+Strong SQL fundamentals
+Analytical thinking
+Ability to translate data into business-relevant insights
 Author name - Rhea Mendonca
