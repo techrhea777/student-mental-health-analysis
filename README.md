@@ -1,20 +1,71 @@
-International Student Mental Health Analysis (SQL - BIGQUERY)
- Problem
+# Student Mental Health Analysis  
+### SQL + Python + Power BI End-to-End Analytics Project
 
-Understanding how duration of stay impacts the mental health of international students is critical for improving student support systems.
+## Overview
 
-Approach
+This project analyzes student mental health using SQL, Python, and Power BI.  
+The goal was to understand how **length of stay** relates to three mental health indicators:
 
-Analyzed a dataset of 50 student records using SQL in Google BigQuery, focusing exclusively on international students to eliminate population bias.
+- **Depression**
+- **Social connectedness**
+- **Stress**
 
-Key steps:
+The project compares **domestic** and **international** students, then visualizes the results in a Power BI dashboard to make the findings easy to interpret.
 
-Filtered dataset to isolate international students
-Segmented students by length of stay
-Computed aggregate mental health metrics per segment
+This is an end-to-end analytics project that demonstrates:
+- data querying with SQL
+- data preparation and visualization with Python
+- dashboard design and storytelling with Power BI
 
+---
 
-Core Query
+## Business Question
+
+How does **length of stay** affect student mental health, and do those patterns differ between **domestic** and **international** students?
+
+This question matters because it can help universities identify:
+- whether students face more challenges early in their stay
+- whether international students experience different stress patterns
+- where support programs may be most useful
+
+---
+
+## Dataset
+
+The analysis is based on a student mental health dataset stored as a CSV file and queried in BigQuery.
+
+### Key fields used
+- `stay` → length of stay
+- `inter_dom` → student category (`Inter` or domestic equivalent)
+- `todep` → depression score
+- `tosc` → social connectedness score
+- `toas` → stress score
+
+A processed version of the data was then used in Python and Power BI with columns such as:
+- `student_type`
+- `avg_depression`
+- `avg_social`
+- `avg_stress`
+
+---
+
+## Project Workflow
+
+The project follows a simple analytics pipeline:
+
+1. **SQL** was used to query and aggregate the raw student data
+2. **Python** was used to validate the processed dataset and generate charts
+3. **Power BI** was used to create an interactive dashboard for final presentation
+
+---
+
+## SQL Analysis
+
+The SQL query summarizes mental health scores for international students by length of stay.
+
+### SQL Query
+
+```sql
 SELECT
   stay,
   COUNT(*) AS count_students,
@@ -26,40 +77,4 @@ WHERE inter_dom = 'Inter'
 GROUP BY stay
 ORDER BY stay;
 
-
-What This Does
-Segmentation → Groups users by behavioral cohort (length of stay)
-Aggregation → Computes key mental health indicators:
-Depression (todep)
-Social connectedness (tosc)
-Stress (toas)
-Normalization → Rounds outputs for consistent reporting
-Ordering → Produces interpretable, time-based trends
-
-
-Why This Matters
-
-This analysis surfaces cohort-based trends, enabling:
-
-Identification of adaptation patterns over time
-Detection of high-risk groups (e.g., early-stage students)
-Data-driven recommendations for student support interventions
-
-
-Key Insight 
-
-Early-stage international students tend to show higher stress and lower social connectedness, suggesting onboarding and integration programs are critical in the first year.
-
-Tech Stack
-SQL (BigQuery)
-Structured dataset (CSV → warehouse table)
-
-
-Takeaway
-
-Designed a cohort-based analytical query to extract actionable insights from raw student data, demonstrating:
-
-Strong SQL fundamentals
-Analytical thinking
-Ability to translate data into business-relevant insights
 Author name - Rhea Mendonca
