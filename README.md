@@ -32,7 +32,7 @@ This question matters because it can help universities identify:
 
 ## Dataset
 
-The analysis is based on a student mental health dataset stored as a CSV file and queried in BigQuery.
+The analysis is based on a student mental health dataset stored as a CSV file and queried in BigQuery. Analyzed a dataset of 50 student records using SQL in Google BigQuery, focusing exclusively on international students to eliminate population bias.
 
 ### Key fields used
 - `stay` → length of stay
